@@ -4,6 +4,7 @@ const schema = buildSchema(`
 	type Query {
 		champion(name: String!): Champion
 		allChampion(name: [String!]):[Champion]
+		hello: String
 	}
 	
 	type Champion {

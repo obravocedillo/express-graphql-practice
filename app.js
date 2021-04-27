@@ -1,11 +1,12 @@
 const express = require('express');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema.js')
+const helloFunctions = require('./functions/hello.js')
 
 const app = express();
 
 const root = {
-	hello: () => 'hello world'
+	hello: helloFunctions.printHello(),
     /*
 	allChampion: getAllChampions
     */
