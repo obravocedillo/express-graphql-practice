@@ -1,8 +1,9 @@
-const User = require("../models/user.model")
+const UserModel = require('../models/user.model')
 
 let userFunction = {
     getAllUsers: async () => {
-        return [{id:'2', name:'oliver', email:'oliver@gmail.com'}]
+        let allUsers = await UserModel.find({});
+        return allUsers;
     }
 }
 

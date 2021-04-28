@@ -7,7 +7,6 @@ const userFunction = require('./functions/users.functions');
 
 const app = express();
 const mongoUrl = process.env.MONGO_URL
-
 mongoose.connect(mongoUrl, { useNewUrlParser: true, useUnifiedTopology: true });
 var db = mongoose.connection;
 
@@ -17,8 +16,8 @@ if(!db){
 }
 
 const root = {
-	hello: helloFunctions.printHello(),
-	allUsers: userFunction.getAllUsers(),
+	hello: helloFunctions.printHello,
+	allUsers: userFunction.getAllUsers,
 }
 
 app.use('/graphql', graphqlHTTP({
@@ -28,3 +27,4 @@ app.use('/graphql', graphqlHTTP({
 }));
 
 module.exports = app;
+

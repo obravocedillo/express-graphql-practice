@@ -3,13 +3,12 @@ let Schema = mongoose.Schema;
 
 let userModel = new Schema({
   name: {
-    type: String,
-    required: true
+    type: String
   },
   email: {
-    type: String,
-    required: true
+    type: String
   },
 });
 
-module.exports = mongoose.model('User', userModel);
+let UserModel = mongoose.model('User', userModel);
+module.exports = UserModel ;
