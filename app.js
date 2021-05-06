@@ -2,8 +2,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const { graphqlHTTP } = require('express-graphql');
 const schema = require('./schema.js');
-const helloFunctions = require('./functions/hello.function.js');
+const helloFunctions = require('./functions/hello.function');
 const userFunction = require('./functions/users.functions');
+const recipeFunction = require('./functions/recipe.functions')
 
 const app = express();
 const mongoUrl = process.env.MONGO_URL
@@ -18,6 +19,9 @@ if(!db){
 const root = {
 	hello: helloFunctions.printHello,
 	allUsers: userFunction.getAllUsers,
+	addRecipe: ({name, ingredients, instructions}) => {
+		return recipeFunction.saveNewRecipe({name, ingredients, instructions})
+	},
 }
 
 app.use('/graphql', graphqlHTTP({
